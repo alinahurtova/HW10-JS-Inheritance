@@ -8,6 +8,17 @@ var Gladiator = function (name) {
         function getPoints () {
             return Math.floor(Math.random() * (101 - 80)) + 80;
         }
+    this.setAttack = function () {
+        console.log(this.name + ' аттакует с силой ' + this.attack);
+    }
+    this.setHitpoints = function () {
+        console.log('У ' + this.name + ' ' + this.hitpoints + ' очков');
+    }
+    this.fight = function (enemy) {
+        this.setAttack();
+        enemy.setHitpoints();
+        return enemy.hitpoints - this.attack;
+    }
 }
 
 var Champion = function (name) {
@@ -24,25 +35,4 @@ Monster.prototype = Gladiator();
 var heracles = new Champion('Геракл');
 var boar = new Monster('BOAR');
 
-// fight, setAttack, setHitpoints
-
-// heracles.fight(boar);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log( boar.fight(heracles) );
